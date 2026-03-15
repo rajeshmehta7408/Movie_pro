@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Movie Prediction</h2>
+
+<form method="POST">
+
+<label>Genre</label>
+
+<form method="POST">
+
+<select name="genre">
+<option value="1">Action</option>
+<option value="2">Drama</option>
+<option value="3">Sci-Fi</option>
+</select>
+
+<label>Budget</label>
+<input type="number" name="budget" required>
+
+<label>Runtime</label>
+<input type="number" name="runtime" required>
+
+<button type="submit">Predict</button>
+
+</form>
+
+{% if rating %}
+
+<div class="result">
+
+<h3>Predicted Rating : {{ rating }}</h3>
+<h3>Status : {{ success }}</h3>
+
+</div>
+
+{% endif %}
+
+
+{% if suggestions %}
+
+<div class="result">
+
+<h3>Recommended Movies</h3>
+
+<ul>
+
+{% for movie in suggestions %}
+<li>{{ movie }}</li>
+{% endfor %}
+
+</ul>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
